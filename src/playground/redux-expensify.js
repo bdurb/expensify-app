@@ -152,7 +152,7 @@ const state = store.getState();
 const getVisibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 });
 
-store.dispatch(addExpense({ description: 'Rent', amount:100 }));
+store.dispatch(addExpense({ description: 'Rent', amount: 100 }));
 
 const demoState = {
   expenses: [{
