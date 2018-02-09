@@ -21,7 +21,7 @@ const addExpense = (
 });
 
 //REMOVE_EXPENSE
-const removeExpense = ({ id }) => ({
+const removeExpense = ({ id } = {}) => ({
   type: 'REMOVE_EXPENSE',
   id
 });
@@ -135,8 +135,14 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
     const textMatch = expense.description.toLowercase().includes(text.toLowercase());
 
     return startDateMatch && endDateMatch && textMatch;
+  }).sort((a, b) => {
+    if (sortBy === 'date') {
+      return a.createdAt < b.createdAt ? 1 : -1;
+    } else if (sortBy === 'amount') {
+      return a.amount < b.amount ? 1: -1;
+    }
   });
-}
+};
 
 //Store creation
 
@@ -152,7 +158,7 @@ const state = store.getState();
 const getVisibleExpenses = getVisibleExpenses(state.expenses, state.filters);
 });
 
-store.dispatch(addExpense({ description: 'Rent', amount: 100 }));
+//store.dispatch(addExpense({ description: 'Rent', amount: 100 }));
 
 const demoState = {
   expenses: [{
