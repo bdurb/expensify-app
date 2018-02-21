@@ -33,3 +33,27 @@ test('should render expense list filters with alt data correctly', () => {
   });
   expect(wrapper).toMatchSnapshot();
 });
+
+test('should handle text change', () => {
+  const value = 'rent';
+  wrapper.find('input').simulate('change', {
+    target: { value }
+  });
+  expect(setTextFilter).toHaveBeenLastCalledWith(value);
+});
+
+test('', () => {
+
+});
+
+test('', () => {
+
+});
+
+test('', () => {
+
+});
+
+test('', () => {
+
+});
